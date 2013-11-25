@@ -19,7 +19,6 @@ namespace PyramidPanic
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private KeyboardState ks, oks;
 
         //properties
 
