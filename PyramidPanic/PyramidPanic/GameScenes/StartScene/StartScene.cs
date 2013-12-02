@@ -1,4 +1,4 @@
-﻿//usings zijn XNA code bibliotheek gebruiken
+﻿            //usings zijn XNA code bibliotheek gebruiken
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +12,17 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-     public class StartScene
+     public class StartScene : IState
     {
 
             //fields van de class StartScene
-        
+         private PyramidPanic game;
 
 
-            //constructor van de StartScene class
-         public StartScene()
+            //constructor van de StartScene class krijgt een object game mee van het type PyramidPanic
+         public StartScene(PyramidPanic game)
          {
-            
-
+             this.game = game;
          }
             //initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
             //void wil zeggen dat er niets teruggeven word.
@@ -39,15 +38,23 @@ namespace PyramidPanic
          }
 
             //update methode
-         public void Update()
+         public void Update(GameTime gameTime)
          {
+             if (Input.EdgeDetectKeyDown(Keys.Right))
+             {
+                 this.game.IState = this.game.PlayScene;
+             }
+             if (Input.EdgeDetectKeyDown(Keys.Left))
+             {
+                 this.game.IState = this.game.HelpScene;
+             }
 
          }
 
             //draw methode
-         public void Draw()
+         public void Draw(GameTime gameTime)
          {
-             
+             this.game.GraphicsDevice.Clear(Color.MediumAquamarine);
          }
 
 
