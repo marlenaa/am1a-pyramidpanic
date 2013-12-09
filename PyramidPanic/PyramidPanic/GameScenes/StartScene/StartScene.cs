@@ -17,6 +17,11 @@ namespace PyramidPanic
 
             //fields van de class StartScene
          private PyramidPanic game;
+            //maak een nieuwe enum aan voor het lezen van de Buttons welke aangekozen is.
+         private enum Buttons {Start, Help, Load, Quit, Scores } ;
+
+            //maak een variabelen van het type  Buttons en geef hem de waarde Buttons.Start
+         private Buttons buttonActive = Buttons.Start;
 
          // maak een variabele ( reference) aan van de image class gemaamd background
          private Image background;
@@ -25,7 +30,7 @@ namespace PyramidPanic
          private Image scoresButton;
          private Image loadButton;
          private Image helpButton;
-         private Image levelButton;
+         private Image quitButton;
 
             //constructor van de StartScene class krijgt een object game mee van het type PyramidPanic
          public StartScene(PyramidPanic game)
@@ -52,7 +57,7 @@ namespace PyramidPanic
              this.scoresButton = new Image(this.game, @"StartScene/Button_scores", new Vector2(130f, 430f));
              this.loadButton = new Image(this.game, @"Startscene/Button_load", new Vector2(240f, 430f));
              this.helpButton = new Image(this.game, @"Startscene/Button_help", new Vector2(350f, 430f));
-             this.levelButton = new Image(this.game, @"StartScene/Button_leveleditor", new Vector2(470f, 430f));
+             this.quitButton = new Image(this.game, @"StartScene/Button_quit", new Vector2(470f, 430f));
          }
 
             //update methode
@@ -67,6 +72,30 @@ namespace PyramidPanic
                  this.game.IState = this.game.HelpScene;
              }
 
+                // maak een switch case instructie voor de variabele burronActive.
+             switch (this.buttonActive)
+             {
+                 case Buttons.Start:
+                     this.startButton.Color = Color.Silver;
+                     break;
+
+                 case Buttons.Scores:
+                     this.scoresButton.Color = Color.Silver;
+                     break;
+
+                 case Buttons.Load:
+                     this.loadButton.Color = Color.Silver;
+                     break;
+
+                 case Buttons.Help:
+                     this.helpButton.Color = Color.Silver;
+                     break;
+
+                 case Buttons.Quit:
+                     this.quitButton.Color = Color.Silver;
+                     break;
+             }
+
          }
 
             //draw methode
@@ -79,7 +108,7 @@ namespace PyramidPanic
              this.scoresButton.Draw(gameTime);
              this.loadButton.Draw(gameTime);
              this.helpButton.Draw(gameTime);
-             this.levelButton.Draw(gameTime);
+             this.quitButton.Draw(gameTime);
          }
 
 

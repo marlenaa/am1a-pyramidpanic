@@ -17,24 +17,28 @@ namespace PyramidPanic
 
         //fields van de class StartScene
         private PyramidPanic game;
+        private Image background;
 
 
         //constructor van de StartScene class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
         {
             this.game = game;
+            this.initialize();
         }
         //initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
         //void wil zeggen dat er niets teruggeven word.
         public void initialize()
         {
+            //roep de load content methode aan.
+            this.LoadContent();
 
         }
 
         //loadcontent method.e deze methode maakt nieuwe objecten aan van de verschillende classes.
         public void LoadContent()
         {
-
+            this.background = new Image(this.game, @"StartScene/Background", Vector2.Zero);
         }
 
         //update methode

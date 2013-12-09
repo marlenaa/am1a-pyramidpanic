@@ -21,13 +21,22 @@ namespace PyramidPanic
         private Texture2D scoresButton;
         private Texture2D loadButton;
         private Texture2D helpButton;
-        private Texture2D levelButton;
+        private Texture2D quitButton;
                 //maak een rectangle voor het detecteren van collision
         private Rectangle rec;
                 //maak een variabele
         private PyramidPanic game;
-        
-                //properties
+                //maak een variabele aan van het type Color met de naam color
+        private Color color = Color.White;
+
+        //properties
+        #region Properties
+        public Color Color
+        {
+            get { return this.color; }
+            set { this.color = value; }
+        } 
+        #endregion
 
                 //constructor
         public Image(PyramidPanic game, String pathNameAsset, Vector2 position)
@@ -39,7 +48,8 @@ namespace PyramidPanic
             this.scoresButton = game.Content.Load<Texture2D>(pathNameAsset);
             this.loadButton = game.Content.Load<Texture2D>(pathNameAsset);
             this.helpButton = game.Content.Load<Texture2D>(pathNameAsset);
-            this.levelButton = game.Content.Load<Texture2D>(pathNameAsset);
+            this.quitButton = game.Content.Load<Texture2D>(pathNameAsset);
+            
             this.rec = new Rectangle((int)position.X, (int) position.Y, this.texture.Width, this.texture.Height);
         }
 
@@ -50,13 +60,13 @@ namespace PyramidPanic
                 //draw
         public void Draw(GameTime gameTime)
         {
-            this.game.SpriteBatch.Draw(this.texture, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.title, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.startButton, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.scoresButton, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.loadButton, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.helpButton, this.rec, Color.White);
-            this.game.SpriteBatch.Draw(this.levelButton, this.rec, Color.White);
+            this.game.SpriteBatch.Draw(this.texture, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.title, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.startButton, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.scoresButton, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.loadButton, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.helpButton, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.quitButton, this.rec, this.color);
         }
 
                 //helpermethode

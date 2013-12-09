@@ -64,7 +64,7 @@ namespace PyramidPanic
         {
             return (ms.RightButton == ButtonState.Pressed &&
                     oms.RightButton == ButtonState.Released);
-        }
+    }
         //dit is een level detector voor het detecteren of een keyboardtoets is ingedrukt
         public static bool LevelDetectKeyDown(Keys key)
         {
