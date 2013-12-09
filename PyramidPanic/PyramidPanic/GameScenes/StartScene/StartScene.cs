@@ -18,7 +18,7 @@ namespace PyramidPanic
             //fields van de class StartScene
          private PyramidPanic game;
             //maak een nieuwe enum aan voor het lezen van de Buttons welke aangekozen is.
-         private enum Buttons {Start, Help, Load, Quit, Scores } ;
+         private enum Buttons {Start, Scores, Load, Help, Quit } ;
 
             //maak een variabelen van het type  Buttons en geef hem de waarde Buttons.Start
          private Buttons buttonActive = Buttons.Start;
@@ -63,6 +63,7 @@ namespace PyramidPanic
             //update methode
          public void Update(GameTime gameTime)
          {
+             /*
              if (Input.EdgeDetectKeyDown(Keys.Right))
              {
                  this.game.IState = this.game.PlayScene;
@@ -70,6 +71,20 @@ namespace PyramidPanic
              if (Input.EdgeDetectKeyDown(Keys.Left))
              {
                  this.game.IState = this.game.HelpScene;
+             }
+           */
+
+
+             // deze if- instructie checked of er op de rechter pijl toets word gedrukt.
+             //de actie die daarop volgt is het ophogen van de variabele ButtonActive
+             if (Input.EdgeDetectKeyDown(Keys.Right))
+             {
+                 this.buttonActive++;
+             }
+             
+             if (Input.EdgeDetectKeyDown(Keys.Left))
+             {
+                 this.buttonActive--;
              }
 
                 // maak een switch case instructie voor de variabele burronActive.
