@@ -53,6 +53,12 @@ namespace PyramidPanic
         } 
         #endregion
 
+        //propertie voor spritebatch
+        public SpriteBatch SpriteBatch
+        {
+            get { return this.spriteBatch; }
+        }
+
 
         //properties
 
