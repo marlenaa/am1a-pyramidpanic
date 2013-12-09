@@ -40,11 +40,11 @@ namespace PyramidPanic
         //update methode
         public void Update(GameTime gameTime)
         {
-            if (Input.EdgeDetectKeyDown(Keys.Right))
+            if (Input.EdgeDetectKeyDown(Keys.W))
             {
                 this.game.IState = this.game.HelpScene;
             }
-            if (Input.EdgeDetectKeyDown(Keys.Left))
+            if (Input.EdgeDetectKeyDown(Keys.Q))
             {
                 this.game.IState = this.game.PlayScene;
             }
@@ -54,7 +54,7 @@ namespace PyramidPanic
         //draw methode
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.Lavender);
+            this.game.GraphicsDevice.Clear(Color.White);
         }
 
 

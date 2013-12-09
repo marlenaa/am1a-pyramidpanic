@@ -6,3 +6,8 @@ Content\StartScene\Button_load.xnb
 Content\StartScene\Button_quit.xnb
 Content\StartScene\Button_scores.xnb
 Content\StartScene\Button_start.xnb
+Content\PlayScene\Background2.xnb
+Content\PlayScene\Panel.xnb
+Content\PlayScene\ComicSans.xnb
+Content\PlayScene\Lives.xnb
+Content\PlayScene\Scarab.xnb

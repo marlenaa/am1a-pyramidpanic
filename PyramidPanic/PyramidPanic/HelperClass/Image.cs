@@ -22,6 +22,7 @@ namespace PyramidPanic
         private Texture2D loadButton;
         private Texture2D helpButton;
         private Texture2D quitButton;
+        private Texture2D bar;
                 //maak een rectangle voor het detecteren van collision
         private Rectangle rec;
                 //maak een variabele
@@ -49,6 +50,7 @@ namespace PyramidPanic
             this.loadButton = game.Content.Load<Texture2D>(pathNameAsset);
             this.helpButton = game.Content.Load<Texture2D>(pathNameAsset);
             this.quitButton = game.Content.Load<Texture2D>(pathNameAsset);
+            this.bar = game.Content.Load<Texture2D>(pathNameAsset);
             
             this.rec = new Rectangle((int)position.X, (int) position.Y, this.texture.Width, this.texture.Height);
         }
@@ -67,6 +69,7 @@ namespace PyramidPanic
             this.game.SpriteBatch.Draw(this.loadButton, this.rec, this.color);
             this.game.SpriteBatch.Draw(this.helpButton, this.rec, this.color);
             this.game.SpriteBatch.Draw(this.quitButton, this.rec, this.color);
+            this.game.SpriteBatch.Draw(this.bar, this.rec, this.color);
         }
 
                 //helpermethode

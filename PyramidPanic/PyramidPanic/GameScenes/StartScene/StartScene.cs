@@ -31,6 +31,11 @@ namespace PyramidPanic
          private Image loadButton;
          private Image helpButton;
          private Image quitButton;
+         
+
+
+         // maak een variabele buttonlist van het type List<Image>.
+         private List<Image> butttonList;
 
             //constructor van de StartScene class krijgt een object game mee van het type PyramidPanic
          public StartScene(PyramidPanic game)
@@ -51,28 +56,34 @@ namespace PyramidPanic
             //loadcontent method.e deze methode maakt nieuwe objecten aan van de verschillende classes.
          public void LoadContent()
          {
+             this.butttonList = new List<Image>();
+             this.butttonList.Add(this.startButton = new Image(this.game, @"StartScene/Button_start", new Vector2(20f, 430f)));
+             this.butttonList.Add(this.scoresButton = new Image(this.game, @"StartScene/Button_scores", new Vector2(130f, 430f)));
+             this.butttonList.Add(this.loadButton = new Image(this.game, @"Startscene/Button_load", new Vector2(240f, 430f)));
+             this.butttonList.Add(this.helpButton = new Image(this.game, @"Startscene/Button_help", new Vector2(350f, 430f)));
+             this.butttonList.Add(this.quitButton = new Image(this.game, @"StartScene/Button_quit", new Vector2(470f, 430f)));
              this.background = new Image(this.game, @"StartScene/Background", Vector2.Zero);
              this.title = new Image(this.game, @"StartScene/Title", new Vector2 (99f, 30f));
-             this.startButton = new Image(this.game, @"StartScene/Button_start", new Vector2(20f, 430f));
-             this.scoresButton = new Image(this.game, @"StartScene/Button_scores", new Vector2(130f, 430f));
-             this.loadButton = new Image(this.game, @"Startscene/Button_load", new Vector2(240f, 430f));
-             this.helpButton = new Image(this.game, @"Startscene/Button_help", new Vector2(350f, 430f));
-             this.quitButton = new Image(this.game, @"StartScene/Button_quit", new Vector2(470f, 430f));
+             
+             
+             
+             
+             
          }
 
             //update methode
          public void Update(GameTime gameTime)
          {
-             /*
-             if (Input.EdgeDetectKeyDown(Keys.Right))
+             
+             if (Input.EdgeDetectKeyDown(Keys.W))
              {
                  this.game.IState = this.game.PlayScene;
              }
-             if (Input.EdgeDetectKeyDown(Keys.Left))
+             if (Input.EdgeDetectKeyDown(Keys.Q))
              {
                  this.game.IState = this.game.HelpScene;
              }
-           */
+           
 
 
              // deze if- instructie checked of er op de rechter pijl toets word gedrukt.
@@ -80,12 +91,21 @@ namespace PyramidPanic
              if (Input.EdgeDetectKeyDown(Keys.Right))
              {
                  this.buttonActive++;
-             }
-             
+             }             
              if (Input.EdgeDetectKeyDown(Keys.Left))
              {
                  this.buttonActive--;
              }
+
+
+             //we doorlopen de lijst met buttons met een foreacht instructie en we roepen voor ieder image object de propertie Color aan en geven deze de waarde Color.White
+
+             foreach (Image image in this.butttonList)
+             {
+                 image.Color = Color.White;
+             }
+
+
 
                 // maak een switch case instructie voor de variabele burronActive.
              switch (this.buttonActive)
@@ -116,7 +136,7 @@ namespace PyramidPanic
             //draw methode
          public void Draw(GameTime gameTime)
          {
-             this.game.GraphicsDevice.Clear(Color.MediumAquamarine);
+             this.game.GraphicsDevice.Clear(Color.White);
              this.background.Draw(gameTime);
              this.title.Draw(gameTime);
              this.startButton.Draw(gameTime);
