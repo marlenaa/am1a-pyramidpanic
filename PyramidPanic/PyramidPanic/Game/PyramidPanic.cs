@@ -59,9 +59,6 @@ namespace PyramidPanic
             get { return this.spriteBatch; }
         }
 
-
-        //properties
-
         public PyramidPanic()
         {
             graphics = new GraphicsDeviceManager(this);
