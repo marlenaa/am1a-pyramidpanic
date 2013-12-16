@@ -27,6 +27,12 @@ namespace PyramidPanic
         private Image scarab;
         private List<IStaticObject> staticObjects;
         private Texture2D block;
+        private Texture2D texture;
+        private Rectangle textureDestinationRect;
+        private Rectangle textureSourceRect;
+        private SpriteEffects effect = SpriteEffects.FlipHorizontally;
+        private KeyboardState ks, oks;
+        private float timer = 0;
         
 
         //dit is het spriteFont voor de scores.
@@ -79,16 +85,20 @@ namespace PyramidPanic
             this.scarab = new Image(this.game, @"PlayScene/Scarab", new Vector2(260f, 449f));
             this.block = game.Content.Load<Texture2D>(@"PlayScene/Block");
             this.LoadLevel("level1.txt");
+            this.texture = this.game.Content.Load<Texture2D>(@"PlayScene/Explorer");
+            this.textureDestinationRect = new Rectangle(0, 0, 0, 0);
+            this.textureSourceRect = new Rectangle(0, 0, 0, 0);
             
         }
 
+        #region levellader
         private void LoadLevel(String File)
         {
             StreamReader stream = new StreamReader(File);
 
             int y = 0;
             string s;
-            while((s = stream.ReadLine()) != null)
+            while ((s = stream.ReadLine()) != null)
             {
                 for (int x = 0; x < s.Length; x++)
                 {
@@ -104,7 +114,8 @@ namespace PyramidPanic
                 case '1': this.staticObjects.Add(new Wall(x, y, this.block));
                     break;
             }
-        }
+        } 
+        #endregion
 
         //update methode
         public void Update(GameTime gameTime)
@@ -122,6 +133,59 @@ namespace PyramidPanic
             {
                 this.game.IState = this.game.GameOverScene;
             }
+
+            this.ks = Keyboard.GetState();
+            //edgedetector
+            if (ks.IsKeyDown(Keys.Right))
+            {
+                this.effect = SpriteEffects.FlipHorizontally;
+                if (this.timer > 5f / 60f)
+                {
+                    if (this.textureSourceRect.X < 10)
+                    {
+                        this.textureSourceRect.X += 101;
+                        if (this.textureDestinationRect.X < 840 - this.textureDestinationRect.Width)
+                        {
+                            this.textureDestinationRect.X += 25;
+                        }
+                    }
+                    else
+                    {
+                        this.textureSourceRect.X = 0;
+                    }
+                    this.timer = 0f;
+                }
+                else
+                {
+                    this.timer += 1f / 60f;
+                }
+            }
+
+            if (ks.IsKeyDown(Keys.Left))
+            {
+                this.effect = SpriteEffects.None;
+                if (this.timer > 5f / 60f)
+                {
+                    if (this.textureSourceRect.X < 10)
+                    {
+                        this.textureSourceRect.X += 101;
+                        if (this.textureDestinationRect.X > 0)
+                        {
+                            this.textureDestinationRect.X -= 25;
+                        }
+                    }
+                    else
+                    {
+                        this.textureSourceRect.X = 0;
+                    }
+                    this.timer = 0f;
+                }
+                else
+                {
+                    this.timer += 1f / 60f;
+                }
+            }
+            oks = ks;
 
         }
 
@@ -143,11 +207,7 @@ namespace PyramidPanic
             this.lives2.Draw(gameTime);
             this.lives3.Draw(gameTime);
             this.scarab.Draw(gameTime);
-
-            
+            this.game.SpriteBatch.Draw(this.texture, this.textureDestinationRect, Color.White);
         }
-
-
-
     }
 }
