@@ -41,11 +41,11 @@ namespace PyramidPanic
          public StartScene(PyramidPanic game)
          {
              this.game = game;
-             //roep de initialize methode aan.
+             //roep de Initialize methode aan.
              this.initialize();
                          
          }
-            //initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
+            //Initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
             //void wil zeggen dat er niets teruggeven word.
          public void initialize()
          {
@@ -63,18 +63,13 @@ namespace PyramidPanic
              this.butttonList.Add(this.helpButton = new Image(this.game, @"Startscene/Button_help", new Vector2(350f, 430f)));
              this.butttonList.Add(this.quitButton = new Image(this.game, @"StartScene/Button_quit", new Vector2(470f, 430f)));
              this.background = new Image(this.game, @"StartScene/Background", Vector2.Zero);
-             this.title = new Image(this.game, @"StartScene/Title", new Vector2 (99f, 30f));
-             
-             
-             
-             
-             
+             this.title = new Image(this.game, @"StartScene/Title", new Vector2 (99f, 30f));   
          }
 
             //update methode
          public void Update(GameTime gameTime)
          {
-             
+
              if (Input.EdgeDetectKeyDown(Keys.W))
              {
                  this.game.IState = this.game.PlayScene;
@@ -83,52 +78,118 @@ namespace PyramidPanic
              {
                  this.game.IState = this.game.HelpScene;
              }
-           
+             {
 
 
-             // deze if- instructie checked of er op de rechter pijl toets word gedrukt.
-             //de actie die daarop volgt is het ophogen van de variabele ButtonActive
-             if (Input.EdgeDetectKeyDown(Keys.Right))
-             {
-                 this.buttonActive++;
-             }             
-             if (Input.EdgeDetectKeyDown(Keys.Left))
-             {
-                 this.buttonActive--;
+
+
+                 // deze if- instructie checked of er op de rechter pijl toets word gedrukt.
+                 //de actie die daarop volgt is het ophogen van de variabele ButtonActive
+                 if (Input.EdgeDetectKeyDown(Keys.Right))
+                 {
+                     this.buttonActive++;
+                 }
+                 if (Input.EdgeDetectKeyDown(Keys.Left))
+                 {
+                     this.buttonActive--;
+                 }
+
+
+                 //we doorlopen de lijst met buttons met een foreacht instructie en we roepen voor ieder image object de propertie Color aan en geven deze de waarde Color.White
+
+                 foreach (Image image in this.butttonList)
+                 {
+                     image.Color = Color.White;
+                 }
+
+
+
+                 // maak een switch case instructie voor de variabele burronActive.
+                 /*switch (this.buttonActive)
+                 {
+                     
+                     case Buttons.Start:
+                         if (Input.EdgeDetectKeyDown(Keys.Enter))
+                         {
+                             this.game.IState = this.game.PlayScene;
+                         }
+                         this.startButton.Color = Color.Silver;
+                         break;
+
+                     case Buttons.Scores:
+                         if (Input.EdgeDetectKeyDown(Keys.Enter))
+                         {
+                             this.game.IState = this.game.ScoreScene;
+                         }
+                         this.scoresButton.Color = Color.Silver;
+                         break;
+
+                     case Buttons.Load:
+                         if (Input.EdgeDetectKeyDown(Keys.Enter))
+                         {
+                             this.game.IState = this.game.LoadScene;
+                         }
+                         this.loadButton.Color = Color.Silver;
+                         break;
+
+                     case Buttons.Help:
+                         if (Input.EdgeDetectKeyDown(Keys.Enter))
+                         {
+                             this.game.IState = this.game.HelpScene;
+                         }
+                         this.helpButton.Color = Color.Silver;
+                         break;
+
+                     case Buttons.Quit:
+                         if (Input.EdgeDetectKeyDown(Keys.Enter))
+                         {
+                             this.game.Exit();
+                         }
+                         this.quitButton.Color = Color.Silver;
+                         break;
+                 
+                 }
+                  */
              }
-
-
-             //we doorlopen de lijst met buttons met een foreacht instructie en we roepen voor ieder image object de propertie Color aan en geven deze de waarde Color.White
-
-             foreach (Image image in this.butttonList)
+             if (this.startButton.Rectangle.Intersects(Input.MouseRect()))
              {
-                 image.Color = Color.White;
+                 if (Input.EdgeDetectMousePressLeft())
+                 {
+                     this.game.IState = this.game.PlayScene;
+                 }
+                 this.startButton.Color = Color.Silver;
              }
-
-
-
-                // maak een switch case instructie voor de variabele burronActive.
-             switch (this.buttonActive)
+             else if (this.scoresButton.Rectangle.Intersects(Input.MouseRect()))
              {
-                 case Buttons.Start:
-                     this.startButton.Color = Color.Silver;
-                     break;
-
-                 case Buttons.Scores:
-                     this.scoresButton.Color = Color.Silver;
-                     break;
-
-                 case Buttons.Load:
-                     this.loadButton.Color = Color.Silver;
-                     break;
-
-                 case Buttons.Help:
-                     this.helpButton.Color = Color.Silver;
-                     break;
-
-                 case Buttons.Quit:
-                     this.quitButton.Color = Color.Silver;
-                     break;
+                 if (Input.EdgeDetectMousePressLeft())
+                 {
+                     this.game.IState = this.game.ScoreScene;
+                 }
+                 this.scoresButton.Color = Color.Silver;
+             }
+             else if (this.loadButton.Rectangle.Intersects(Input.MouseRect()))
+             {
+                 if (Input.EdgeDetectMousePressLeft())
+                 {
+                     this.game.IState = this.game.LoadScene;
+                 }
+                 this.loadButton.Color = Color.Silver;
+             }
+             else if (this.helpButton.Rectangle.Intersects(Input.MouseRect()))
+             {
+                 if (Input.EdgeDetectMousePressLeft())
+                 {
+                     this.game.IState = this.game.HelpScene;
+                 }
+                 this.helpButton.Color = Color.Silver;
+             }
+             else if (this.quitButton.Rectangle.Intersects(Input.MouseRect()))
+             {
+                 if (Input.EdgeDetectMousePressLeft())
+                 {
+                     this.game.Exit();
+                 }
+                 this.quitButton.Color = Color.Silver;
              }
 
          }

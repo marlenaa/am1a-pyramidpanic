@@ -17,6 +17,7 @@ namespace PyramidPanic
 
         //fields
     {
+        //private PyramidPanic game;
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
@@ -25,11 +26,17 @@ namespace PyramidPanic
         private PlayScene playScene;
         private HelpScene helpScene;
         private GameOverScene gameOverScene;
-
+        private LoadScene loadScene;
+        private ScoreScene scoreScene;
         private IState iState;
+        
         //properties
         //maak de interface variabele iState buiten de claas d.m.v een prpertie IState
         #region Properties
+        public LoadScene LoadScene
+        {
+            get { return this.loadScene; }
+        }
         public IState IState
         {
             get { return this.iState; }
@@ -50,7 +57,11 @@ namespace PyramidPanic
         public GameOverScene GameOverScene
         {
             get { return this.gameOverScene; }
-        } 
+        }
+        public ScoreScene ScoreScene
+        {
+            get { return this.scoreScene; }
+        }
         #endregion
 
         //propertie voor spritebatch
@@ -58,14 +69,15 @@ namespace PyramidPanic
         {
             get { return this.spriteBatch; }
         }
-
+        //constructor
         public PyramidPanic()
         {
+            //this.game = game;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
-        //constructor
+       
 
         protected override void Initialize()
         {
@@ -90,8 +102,10 @@ namespace PyramidPanic
             this.playScene = new PlayScene(this);
             this.helpScene = new HelpScene(this);
             this.gameOverScene = new GameOverScene(this);
+            this.scoreScene = new ScoreScene(this);
                     //this.istate word aangeroepen
             this.iState = this.StartScene;
+            this.loadScene = new LoadScene(this);
         }   
 
         protected override void UnloadContent()

@@ -17,18 +17,21 @@ namespace PyramidPanic
 
         //fields van de class StartScene
         private PyramidPanic game;
+        private SpriteFont spriteFont;
 
 
         //constructor van de StartScene class krijgt een object game mee van het type PyramidPanic
         public HelpScene(PyramidPanic game)
         {
             this.game = game;
+            this.initialize();
         }
-        //initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
+        //Initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
         //void wil zeggen dat er niets teruggeven word.
         public void initialize()
         {
-
+            this.spriteFont = game.Content.Load<SpriteFont>(@"HelpScene/ComicSans");
+            this.LoadContent();
         }
 
         //loadcontent method.e deze methode maakt nieuwe objecten aan van de verschillende classes.
@@ -46,7 +49,7 @@ namespace PyramidPanic
             }
             if (Input.EdgeDetectKeyDown(Keys.Q))
             {
-                this.game.IState = this.game.GameOverScene;
+                this.game.IState = this.game.LoadScene;
             }
 
         }
@@ -55,6 +58,7 @@ namespace PyramidPanic
         public void Draw(GameTime gameTime)
         {
             this.game.GraphicsDevice.Clear(Color.White);
+            this.game.SpriteBatch.DrawString(this.spriteFont, "HELPSCENE", new Vector2(0f, 0f), Color.Black);
         }
 
 

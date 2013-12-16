@@ -8,6 +8,11 @@ Content\StartScene\Button_scores.xnb
 Content\StartScene\Button_start.xnb
 Content\PlayScene\Background2.xnb
 Content\PlayScene\Panel.xnb
-Content\PlayScene\ComicSans.xnb
 Content\PlayScene\Lives.xnb
 Content\PlayScene\Scarab.xnb
+Content\PlayScene\Block.xnb
+Content\GameOverScene\Overlay.xnb
+Content\PlayScene\ComicSans.xnb
+Content\GameOverScene\ComicSans.xnb
+Content\HelpScene\ComicSans.xnb
+Content\ScoreScene\ComicSans.xnb

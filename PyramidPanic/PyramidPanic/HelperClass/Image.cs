@@ -36,7 +36,11 @@ namespace PyramidPanic
         {
             get { return this.color; }
             set { this.color = value; }
-        } 
+        }
+        public Rectangle Rectangle
+        {
+            get { return this.rec; }
+        }
         #endregion
 
                 //constructor
@@ -73,5 +77,7 @@ namespace PyramidPanic
         }
 
                 //helpermethode
+        
+
     }
 }
