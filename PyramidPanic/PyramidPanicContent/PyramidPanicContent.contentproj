@@ -173,8 +173,36 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayScene\explorer_down.png">
-      <Name>explorer_down</Name>
+    <Compile Include="PlayScene\Explorer2.png">
+      <Name>Explorer2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayScene\Block_hor.png">
+      <Name>Block_hor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayScene\Block_vert.png">
+      <Name>Block_vert</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayScene\Scorpion.png">
+      <Name>Scorpion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayScene\Beetle.png">
+      <Name>Beetle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
