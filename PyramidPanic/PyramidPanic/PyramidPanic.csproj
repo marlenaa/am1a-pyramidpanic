@@ -120,11 +120,18 @@
     <Compile Include="GameScenes\Objects\IStaticObject.cs" />
     <Compile Include="GameScenes\Objects\Wall.cs" />
     <Compile Include="GameScenes\Objects\Wall2.cs" />
+    <Compile Include="GameScenes\PlayScene\explorer\ExplorerIdle.cs" />
     <Compile Include="GameScenes\PlayScene\explorer\Explorer.cs" />
-    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkDown.cs" />
-    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkLeft.cs" />
+    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkDown.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkLeft.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkRight.cs" />
-    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkUp.cs" />
+    <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkUp.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GameScenes\PlayScene\IAnimatedSprite.cs" />
     <Compile Include="GameScenes\PlayScene\scorpion\WalkRight.cs" />
     <Compile Include="GameScenes\PlayScene\scorpion\Scorpion.cs" />

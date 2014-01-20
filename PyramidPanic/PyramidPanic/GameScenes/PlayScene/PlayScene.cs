@@ -24,13 +24,14 @@ namespace PyramidPanic
         private Image lives;
         private Image lives2;
         private Image lives3;
+        private Texture2D beetle;
+        private Texture2D scorpion;
         private Image scarab;
         private List<IStaticObject> staticObjects;
+        private List<IAnimatedSprite> enemies;
         private Texture2D block, block2, block3;
         private KeyboardState ks, oks;
-        //private Explorer explorer;
-        private Scorpion scorpion, scorpion1;
-        private Beetle beetle, beetle1;
+        private Explorer explorer;
 
 
         public List<IStaticObject> StaticObjects
@@ -63,6 +64,7 @@ namespace PyramidPanic
         {
             this.game = game;
             this.staticObjects = new List<IStaticObject>();
+            this.enemies = new List<IAnimatedSprite>();
             this.initialize();
         }
         //Initialize methode. deze methode initialiseert( geeft standaartwaarden aan variabelen)
@@ -89,12 +91,10 @@ namespace PyramidPanic
             this.block = game.Content.Load<Texture2D>(@"PlayScene/Block");
             this.block2 = game.Content.Load<Texture2D>(@"PlayScene/Block_hor");
             this.block3 = game.Content.Load<Texture2D>(@"PlayScene/Block_vert");
+            this.beetle = game.Content.Load<Texture2D>(@"PlayScene/Beetle");
+            this.scorpion = game.Content.Load<Texture2D>(@"PlayScene/Scorpion");
             this.LoadLevel("level1.txt");
-            //this.explorer = new Explorer(this.game, 1, this);
-            this.scorpion = new Scorpion(this.game, new Vector2(100f, 200f));
-            this.scorpion1 = new Scorpion(this.game, new Vector2(200f, 100f));
-            this.beetle = new Beetle(this.game, new Vector2(100f, 200f));
-            this.beetle1 = new Beetle(this.game, new Vector2(200f, 100f));
+            this.explorer = new Explorer(this.game, new Vector2(32f, 240f));
         }
 
         #region levellader
@@ -123,6 +123,10 @@ namespace PyramidPanic
                     break;
                 case '3': this.staticObjects.Add(new Wall(x, y, this.block3));
                     break;
+                case 'B': this.enemies.Add(new Beetle(this.game, new Vector2(x * 32, y * 32), this.beetle));
+                    break;
+                case 'S': this.enemies.Add(new Scorpion(this.game, new Vector2(x * 32, y * 32), this.scorpion));
+                    break;
             }
         } 
         #endregion
@@ -143,33 +147,32 @@ namespace PyramidPanic
             {
                 this.game.IState = this.game.GameOverScene;
             }
-            this.scorpion.Update(gameTime);
-            this.beetle.Update(gameTime);
-            this.scorpion1.Update(gameTime);
-            this.beetle1.Update(gameTime);
+            foreach (IAnimatedSprite en in this.enemies) en.Update(gameTime);
+            this.explorer.Update(gameTime);
 
             this.ks = Keyboard.GetState();
             //edgedetector
+            /*
             if (ks.IsKeyDown(Keys.Right))
             {
-                //this.explorer.Position += new Vector2(2, 0);
+                this.explorer.Position += new Vector2(2, 0);
             }
 
             if (ks.IsKeyDown(Keys.Left))
             {
-                //this.explorer.Position -= new Vector2(2, 0);
+                this.explorer.Position -= new Vector2(2, 0);
             }
             if (ks.IsKeyDown(Keys.Up))
             {
-                //this.explorer.Position += new Vector2(2, 0);
+                this.explorer.Position += new Vector2(2, 0);
             }
 
             if (ks.IsKeyDown(Keys.Down))
             {
-                //this.explorer.Position -= new Vector2(2, 0);
+                this.explorer.Position -= new Vector2(2, 0);
             }
-
-            //this.explorer.Update(gameTime);
+            */
+            this.explorer.Update(gameTime);
             oks = ks;
 
         }
@@ -192,11 +195,8 @@ namespace PyramidPanic
             this.lives2.Draw(gameTime);
             this.lives3.Draw(gameTime);
             this.scarab.Draw(gameTime);
-            this.scorpion.Draw(gameTime);
-            this.beetle.Draw(gameTime);
-            this.scorpion1.Draw(gameTime);
-            this.beetle1.Draw(gameTime);
-            //this.explorer.Draw(gameTime);
+            foreach (IAnimatedSprite en in this.enemies) en.Draw(gameTime);
+            this.explorer.Draw(gameTime);
         }
     }
 }

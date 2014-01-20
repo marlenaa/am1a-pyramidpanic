@@ -16,5 +16,7 @@ namespace PyramidPanic
     {
         PyramidPanic Game {get;}
         Texture2D Texture {get;}
+        void Draw(GameTime gameTime);
+        void Update(GameTime gameTime);
     }
 }

@@ -40,8 +40,14 @@ namespace PyramidPanic
         {
             if (this.explorer.Position.Y > 480 - 64)
             {
-                this.explorer.State = new WalkUp(this.explorer);
-                this.explorer.WalkUp.initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.WalkDown.initialize();
+            }
+            if (Input.EdgeDetectKeyUp(Keys.Down))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.initialize();
             }
             this.explorer.Position += new Vector2(0f, this.explorer.Speed);
             this.destinationRect.X = (int)this.explorer.Position.X;

@@ -15,32 +15,40 @@ namespace PyramidPanic
     {
         //Fields
         private PyramidPanic game;
+        private ExplorerIdle idle;
         private IEntityState state;
         private Texture2D texture;
-        private int speed = 3;
+        private int speed = 2;
         private Vector2 position;
         //maak van iedere toestand(state) een field
         private ExplorerWalkUp walkUp;
         private ExplorerWalkDown walkDown;
-        private ExplorerWalkUp walkLeft;
-        private ExplorerWalkDown walkRight;
-
-        public ExplorerWalkUp WalkUp
-        {
-            get { return this.walkUp; }
-        }
-        public ExplorerWalkDown WalkDown
-        {
-            get { return this.walkDown; }
-        }
-        public ExplorerWalkLeft WalkLeft
-        {
-            get { return this..walkLeft; }
-        }
+        private ExplorerWalkLeft walkLeft;
+        private ExplorerWalkRight walkRight;
+        
+            public ExplorerWalkUp WalkUp
+            {
+                get { return this.walkUp; }
+            }
+            public ExplorerWalkDown WalkDown
+            {
+                get { return this.walkDown; }
+            }
+            public ExplorerWalkLeft WalkLeft
+            {
+                get { return this.walkLeft; }
+            }
+         
         public ExplorerWalkRight WalkRight
         {
             get { return this.walkRight; }
         }
+
+        public ExplorerIdle Idle
+        {
+            get { return this.idle; }
+        }
+     
         public IEntityState State
         {
             set { this.state = value;   }
@@ -73,7 +81,8 @@ namespace PyramidPanic
             this.walkDown = new ExplorerWalkDown(this);
             this.walkLeft = new ExplorerWalkLeft(this);
             this.walkRight = new ExplorerWalkRight(this);
-            this.state = this.walkRight;
+            this.idle = new ExplorerIdle(this);
+            this.state = this.idle;
         }
 
         //Update

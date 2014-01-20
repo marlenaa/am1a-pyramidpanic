@@ -22,7 +22,7 @@ namespace PyramidPanic
         public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
         {
             this.iAnimatedSprite = iAnimatedSprite;
-            this.sourceRect = new Rectangle(0, 0, 32, 32);
+            this.sourceRect = new Rectangle(32, 0, 32, 32);
             this.effect = SpriteEffects.None;
 
         }

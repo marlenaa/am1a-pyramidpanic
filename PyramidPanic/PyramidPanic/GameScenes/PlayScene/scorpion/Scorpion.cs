@@ -55,7 +55,7 @@ namespace PyramidPanic
         }
 
         //constructor
-        public Scorpion(PyramidPanic game, Vector2 position)
+        public Scorpion(PyramidPanic game, Vector2 position, Texture2D texture)
         {
             this.game = game;
             this.position = position;

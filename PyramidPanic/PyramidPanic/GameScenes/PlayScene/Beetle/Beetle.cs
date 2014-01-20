@@ -54,11 +54,11 @@ namespace PyramidPanic
         }
 
         //constructor
-        public Beetle(PyramidPanic game, Vector2 position)
+        public Beetle(PyramidPanic game, Vector2 position, Texture2D texture)
         {
             this.game = game;
             this.position = position;
-            this.texture = game.Content.Load<Texture2D>(@"PlayScene/Beetle");
+            this.texture = texture;
             this.walkUp = new WalkUp(this);
             this.walkDown = new WalkDown(this);
             this.state = this.walkUp;

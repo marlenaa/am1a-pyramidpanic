@@ -38,9 +38,13 @@ namespace PyramidPanic
         {
             if (this.explorer.Position.Y < 0)
             {
-                this.explorer.State = this.explorer.WalkDown;
-                this.explorer.WalkDown.initialize();
-                
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.WalkUp.initialize();
+            }
+            if (Input.EdgeDetectKeyUp(Keys.Up))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.initialize();
             }
             this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
             this.destinationRect.X = (int)this.explorer.Position.X;

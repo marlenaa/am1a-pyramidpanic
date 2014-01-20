@@ -32,7 +32,17 @@ namespace PyramidPanic
         {
             if (this.explorer.Position.X < 0)
             {
-                this.explorer.State = new WalkRight(this.explorer);
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.initialize();
+                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.Position += new Vector2(this.explorer.Speed, 0f);
+                
+            }
+            if (Input.EdgeDetectKeyUp(Keys.Left))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.Idle.initialize();
             }
             this.explorer.Position -= new Vector2(this.explorer.Speed, 0f);
             this.destinationRect.X = (int)this.explorer.Position.X;

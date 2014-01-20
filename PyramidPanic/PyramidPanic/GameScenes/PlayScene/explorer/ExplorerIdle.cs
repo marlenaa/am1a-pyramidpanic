@@ -12,13 +12,19 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class ExplorerWalkRight : AnimatedSprite, IEntityState
+    public class ExplorerIdle : AnimatedSprite, IEntityState
     {
         //Fields
         private Explorer explorer;
 
+        //properties
+        public SpriteEffects Effect
+        {
+            set { base.effect = value; }
+        }
+
         //contructor
-        public ExplorerWalkRight(Explorer explorer) : base(explorer)
+        public ExplorerIdle(Explorer explorer) : base(explorer)
         {
             this.explorer = explorer;
             this.destinationRect = new Rectangle((int)this.explorer.Position.X,
@@ -26,25 +32,42 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        //initialize
+        public void initialize()
+        {        
+            this.destinationRect.X = (int)this.explorer.Position.X;
+            this.destinationRect.Y = (int)this.explorer.Position.Y;
+
+        }
 
         public new void Update(GameTime gameTime)
         {
             if (this.explorer.Position.X > 640 - 32)
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.initialize();
+               // this.explorer.State = new WalkLeft(this.explorer);
             }
-            if (Input.EdgeDetectKeyUp(Keys.Right))
+            if (Input.EdgeDetectKeyDown(Keys.Right))
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.initialize();
+                this.explorer.State = this.explorer.WalkRight;
             }
-            this.explorer.Position += new Vector2(this.explorer.Speed, 0f);
+            else if(Input.EdgeDetectKeyDown(Keys.Left))
+            {
+                this.explorer.State = this.explorer.WalkLeft;
+
+            }
+            else if(Input.EdgeDetectKeyDown(Keys.Up))
+            {
+                this.explorer.State = this.explorer.WalkUp;
+            }
+            else if(Input.EdgeDetectKeyDown(Keys.Down))
+            {
+                this.explorer.State = this.explorer.WalkDown;
+            }
+
+            this.explorer.Position += new Vector2(0f, 0f);
             this.destinationRect.X = (int)this.explorer.Position.X;
             this.destinationRect.Y = (int)this.explorer.Position.Y;
-            
-            base.Update(gameTime);
+            //base.Update(gameTime);
         }
 
         public new void Draw(GameTime gameTime)
