@@ -18,6 +18,7 @@ namespace PyramidPanic
         private float timer = 0f;
         protected Rectangle destinationRect, sourceRect;
         protected SpriteEffects effect;
+        protected float rotation = 0f;
         //Constructor
         public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
         {
@@ -51,7 +52,7 @@ namespace PyramidPanic
         //Draw
         public void Draw(GameTime gameTime)
         {
-            this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture, this.destinationRect, this.sourceRect, Color.White, 0f, Vector2.Zero, this.effect, 0);
+            this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture, this.destinationRect, this.sourceRect, Color.White, this.rotation, Vector2.Zero, this.effect, 0);
         }
 
 

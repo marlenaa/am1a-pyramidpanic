@@ -23,6 +23,11 @@ namespace PyramidPanic
             set { base.effect = value; }
         }
 
+        public float Rotation
+        {
+            set { base.rotation = value; }
+        }
+
         //contructor
         public ExplorerIdle(Explorer explorer) : base(explorer)
         {

@@ -24,6 +24,7 @@ namespace PyramidPanic
         {
             this.effect = SpriteEffects.FlipVertically;
             this.explorer = explorer;
+            this.rotation = (float)Math.PI / 2;
             this.destinationRect = new Rectangle((int)this.explorer.Position.X,
                                                 (int)this.explorer.Position.Y,
                                                 32,
@@ -48,6 +49,7 @@ namespace PyramidPanic
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.None;
                 this.explorer.Idle.initialize();
+                this.explorer.Idle.Rotation = (float)Math.PI / 2;
             }
             this.explorer.Position += new Vector2(0f, this.explorer.Speed);
             this.destinationRect.X = (int)this.explorer.Position.X;
