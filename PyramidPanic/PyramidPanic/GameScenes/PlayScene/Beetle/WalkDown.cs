@@ -38,7 +38,7 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-            if (this.beetle.Position.Y > 480 - 64)
+            if (this.beetle.Position.Y > 480 - 48)
             {
                 this.beetle.State = new WalkUp(this.beetle);
                 this.beetle.WalkUp.initialize();

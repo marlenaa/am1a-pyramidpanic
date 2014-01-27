@@ -19,12 +19,14 @@ namespace PyramidPanic
         protected Rectangle destinationRect, sourceRect;
         protected SpriteEffects effect;
         protected float rotation = 0f;
+        private Vector2 pivot;
         //Constructor
         public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
         {
             this.iAnimatedSprite = iAnimatedSprite;
             this.sourceRect = new Rectangle(32, 0, 32, 32);
             this.effect = SpriteEffects.None;
+            this.pivot = new Vector2(16f, 16f);
 
         }
         //Update
@@ -52,7 +54,7 @@ namespace PyramidPanic
         //Draw
         public void Draw(GameTime gameTime)
         {
-            this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture, this.destinationRect, this.sourceRect, Color.White, this.rotation, Vector2.Zero, this.effect, 0);
+            this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture, this.destinationRect, this.sourceRect, Color.White, this.rotation, this.pivot, this.effect, 0);
         }
 
 
