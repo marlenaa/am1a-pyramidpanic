@@ -53,7 +53,7 @@ namespace PyramidPanic
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.Rotation = -(float)Math.PI / 2;
+                this.explorer.Idle.Rotation = -(float)Math.PI / 2 ;
             }
             base.Update(gameTime);
         }
