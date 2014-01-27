@@ -12,49 +12,69 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class ExplorerWalkLeft : AnimatedSprite, IEntityState
+    public class ExplorerIdleWalk : AnimatedSprite, IEntityState
     {
         //Fields
         private Explorer explorer;
 
-        //contructor
-        public ExplorerWalkLeft(Explorer explorer) : base(explorer)
+        //properties
+        public SpriteEffects Effect
         {
-            this.effect = SpriteEffects.FlipHorizontally;
+            set { base.effect = value; }
+        }
+
+        public float Rotation
+        {
+            set { base.rotation = value; }
+        }
+
+        //contructor
+        public ExplorerIdleWalk(Explorer explorer) : base(explorer)
+        {
             this.explorer = explorer;
             this.destinationRect = new Rectangle((int)this.explorer.Position.X,
                                                 (int)this.explorer.Position.Y,
                                                 32,
                                                 32);
         }
+        //initialize
         public void initialize()
-        {
-
+        {        
             this.destinationRect.X = (int)this.explorer.Position.X;
             this.destinationRect.Y = (int)this.explorer.Position.Y;
+
         }
+
         public new void Update(GameTime gameTime)
         {
-
-            this.explorer.Position -= new Vector2(this.explorer.Speed, 0f);
-
-            if (this.explorer.Position.X < 16)
+           
+            if (Input.EdgeDetectKeyUp(Keys.Right))
             {
-                this.explorer.Position += new Vector2(this.explorer.Speed, 0f);
-                this.explorer.State = this.explorer.IdleWalk;
-                this.explorer.IdleWalk.Effect = SpriteEffects.FlipHorizontally;               
-                this.explorer.IdleWalk.Rotation = 0f;
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = 0f;
 
             }
-            if (Input.EdgeDetectKeyUp(Keys.Left))
+            else if(Input.EdgeDetectKeyUp(Keys.Left))
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
-                this.explorer.Idle.initialize();
                 this.explorer.Idle.Rotation = 0f;
+
             }
-            this.destinationRect.X = (int)this.explorer.Position.X;
-            this.destinationRect.Y = (int)this.explorer.Position.Y;
+            else if(Input.EdgeDetectKeyUp(Keys.Up))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = -(float)Math.PI/2;
+            }
+            else if(Input.EdgeDetectKeyUp(Keys.Down))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = (float)Math.PI/2;
+            }
+            //zorgt voor de animatie.
             base.Update(gameTime);
         }
 

@@ -26,12 +26,13 @@ namespace PyramidPanic
         private Image lives3;
         private Texture2D beetle;
         private Texture2D scorpion;
+        private Texture2D explorer;
         private Image scarab;
         private List<IStaticObject> staticObjects;
         private List<IAnimatedSprite> enemies;
         private Texture2D block, block2, block3;
         private KeyboardState ks, oks;
-        private Explorer explorer;
+        //private Explorer explorer;
 
 
         public List<IStaticObject> StaticObjects
@@ -76,7 +77,7 @@ namespace PyramidPanic
 
         }
 
-        //loadcontent method.e deze methode maakt nieuwe objecten aan van de verschillende classes.
+        //loadcontent methode deze methode maakt nieuwe objecten aan van de verschillende classes.
         public void LoadContent()
         {
             this.background = new Image(this.game, @"PlayScene/Background2", Vector2.Zero);
@@ -93,8 +94,9 @@ namespace PyramidPanic
             this.block3 = game.Content.Load<Texture2D>(@"PlayScene/Block_vert");
             this.beetle = game.Content.Load<Texture2D>(@"PlayScene/Beetle");
             this.scorpion = game.Content.Load<Texture2D>(@"PlayScene/Scorpion");
+            this.explorer = game.Content.Load<Texture2D>(@"PlayScene/Explorer");
             this.LoadLevel("level1.txt");
-            this.explorer = new Explorer(this.game, new Vector2(32f, 240f));
+            //this.explorer = new Explorer(this.game, new Vector2(32f, 240f));
         }
 
         #region levellader
@@ -127,6 +129,8 @@ namespace PyramidPanic
                     break;
                 case 'S': this.enemies.Add(new Scorpion(this.game, new Vector2(x * 32, y * 32), this.scorpion));
                     break;
+                case 'E': this.enemies.Add(new Explorer(this.game, new Vector2(x * 32, y * 32), this.explorer));
+                    break;
             }
         } 
         #endregion
@@ -148,7 +152,7 @@ namespace PyramidPanic
                 this.game.IState = this.game.GameOverScene;
             }
             foreach (IAnimatedSprite en in this.enemies) en.Update(gameTime);
-            this.explorer.Update(gameTime);
+            //this.explorer.Update(gameTime);
 
             this.ks = Keyboard.GetState();
             //edgedetector
@@ -172,7 +176,7 @@ namespace PyramidPanic
                 this.explorer.Position -= new Vector2(2, 0);
             }
             */
-            this.explorer.Update(gameTime);
+            //this.explorer.Update(gameTime);
             oks = ks;
 
         }
@@ -196,7 +200,7 @@ namespace PyramidPanic
             this.lives3.Draw(gameTime);
             this.scarab.Draw(gameTime);
             foreach (IAnimatedSprite en in this.enemies) en.Draw(gameTime);
-            this.explorer.Draw(gameTime);
+            //this.explorer.Draw(gameTime);
         }
     }
 }

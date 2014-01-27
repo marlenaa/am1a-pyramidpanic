@@ -39,21 +39,21 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-            if (this.explorer.Position.Y > 480 - 64)
+            this.explorer.Position += new Vector2(0f, this.explorer.Speed);
+
+            if (this.explorer.Position.Y > 480 - 48)
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.WalkDown.initialize();
+                this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
+                this.explorer.State = this.explorer.IdleWalk;
+                this.explorer.IdleWalk.Effect = SpriteEffects.None;
+                this.explorer.IdleWalk.Rotation = (float)Math.PI / 2;
             }
             if (Input.EdgeDetectKeyUp(Keys.Down))
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.initialize();
                 this.explorer.Idle.Rotation = (float)Math.PI / 2;
             }
-            this.explorer.Position += new Vector2(0f, this.explorer.Speed);
-            this.destinationRect.X = (int)this.explorer.Position.X;
-            this.destinationRect.Y = (int)this.explorer.Position.Y;
             base.Update(gameTime);
         }
 

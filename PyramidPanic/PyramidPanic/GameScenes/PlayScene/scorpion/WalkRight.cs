@@ -26,6 +26,10 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        public void initialize()
+        {
+
+        }
 
         public new void Update(GameTime gameTime)
         {

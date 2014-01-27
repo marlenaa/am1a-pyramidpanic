@@ -26,24 +26,30 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        public void initialize()
+        {
+
+            this.destinationRect.X = (int)this.explorer.Position.X;
+            this.destinationRect.Y = (int)this.explorer.Position.Y;
+        }
 
         public new void Update(GameTime gameTime)
         {
-            if (this.explorer.Position.X > 640 - 32)
+            this.explorer.Position += new Vector2(this.explorer.Speed, 0f);
+
+            if (this.explorer.Position.X > 640 - 16)
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.initialize();
+                this.explorer.Position -= new Vector2(this.explorer.Speed, 0f);
+                this.explorer.State = this.explorer.IdleWalk;
+                this.explorer.IdleWalk.Effect = SpriteEffects.None;
+                this.explorer.IdleWalk.Rotation = 0f;
             }
             if (Input.EdgeDetectKeyUp(Keys.Right))
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.initialize();
+                this.explorer.Idle.Rotation = 0f;
             }
-            this.explorer.Position += new Vector2(this.explorer.Speed, 0f);
-            this.destinationRect.X = (int)this.explorer.Position.X;
-            this.destinationRect.Y = (int)this.explorer.Position.Y;
-            
             base.Update(gameTime);
         }
 

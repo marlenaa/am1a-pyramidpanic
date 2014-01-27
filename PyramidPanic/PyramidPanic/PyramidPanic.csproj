@@ -120,6 +120,7 @@
     <Compile Include="GameScenes\Objects\IStaticObject.cs" />
     <Compile Include="GameScenes\Objects\Wall.cs" />
     <Compile Include="GameScenes\Objects\Wall2.cs" />
+    <Compile Include="GameScenes\PlayScene\explorer\ExplorerIdleWalk.cs" />
     <Compile Include="GameScenes\PlayScene\explorer\ExplorerIdle.cs" />
     <Compile Include="GameScenes\PlayScene\explorer\Explorer.cs" />
     <Compile Include="GameScenes\PlayScene\explorer\ExplorerWalkDown.cs">

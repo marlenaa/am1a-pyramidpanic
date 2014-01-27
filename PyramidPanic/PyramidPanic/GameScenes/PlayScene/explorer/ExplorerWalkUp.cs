@@ -27,6 +27,9 @@ namespace PyramidPanic
                                                 (int)this.explorer.Position.Y,
                                                 32,
                                                 32);
+            this.effect = SpriteEffects.None;
+            this.rotation = -(float)Math.PI / 2;
+
         }
         public void initialize()
         {
@@ -36,19 +39,22 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-            if (this.explorer.Position.Y < 0)
+            this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
+
+            if (this.explorer.Position.Y < 16)
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.WalkUp.initialize();
+                this.explorer.Position += new Vector2(0f, this.explorer.Speed); 
+                this.explorer.State = this.explorer.IdleWalk;
+               
+                this.explorer.IdleWalk.Effect = SpriteEffects.None;
+                this.explorer.IdleWalk.Rotation = -(float)Math.PI / 2;
             }
             if (Input.EdgeDetectKeyUp(Keys.Up))
             {
                 this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.initialize();
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = -(float)Math.PI / 2;
             }
-            this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
-            this.destinationRect.X = (int)this.explorer.Position.X;
-            this.destinationRect.Y = (int)this.explorer.Position.Y;
             base.Update(gameTime);
         }
 
