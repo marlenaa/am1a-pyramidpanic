@@ -46,8 +46,9 @@ namespace PyramidPanic
             {
                 //word de snelheid meegegeven
                 this.explorer.Position += new Vector2(0f, this.explorer.Speed); 
+                //word de idle state meegegeven
                 this.explorer.State = this.explorer.IdleWalk;
-               
+               //word de sprite effect meegegeven
                 this.explorer.IdleWalk.Effect = SpriteEffects.None;
                 this.explorer.IdleWalk.Rotation = -(float)Math.PI / 2;
             }
