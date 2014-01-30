@@ -1,4 +1,5 @@
-﻿//usings zijn XNA code bibliotheek gebruiken
+﻿//dit is de explorer walk up class hiermee kan de explorer omhoog lopen
+//usings zijn XNA code bibliotheek gebruiken
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace PyramidPanic
             this.destinationRect.X = (int)this.explorer.Position.X;
             this.destinationRect.Y = (int)this.explorer.Position.Y;
         }
-
+        //update
         public new void Update(GameTime gameTime)
         {
             this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
