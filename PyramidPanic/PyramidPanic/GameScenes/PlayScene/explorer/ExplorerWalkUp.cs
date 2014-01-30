@@ -49,6 +49,7 @@ namespace PyramidPanic
                 this.explorer.IdleWalk.Effect = SpriteEffects.None;
                 this.explorer.IdleWalk.Rotation = -(float)Math.PI / 2;
             }
+            //als de omhoog toets word ingedrukt
             if (Input.EdgeDetectKeyUp(Keys.Up))
             {
                 this.explorer.State = this.explorer.Idle;
@@ -57,7 +58,7 @@ namespace PyramidPanic
             }
             base.Update(gameTime);
         }
-
+        //draw
         public new void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
