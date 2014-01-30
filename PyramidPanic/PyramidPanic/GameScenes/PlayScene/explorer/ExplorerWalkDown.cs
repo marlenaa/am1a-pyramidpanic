@@ -45,9 +45,13 @@ namespace PyramidPanic
             //als de positie y > 480 - 48 is:
             if (this.explorer.Position.Y > 480 - 48)
             {
+                //word de snelheid meegegeven
                 this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
+                //word de idlewalk class meegegeven
                 this.explorer.State = this.explorer.IdleWalk;
+                //word het effect meegegeven
                 this.explorer.IdleWalk.Effect = SpriteEffects.None;
+                //word het plaatje gedraaid
                 this.explorer.IdleWalk.Rotation = (float)Math.PI / 2;
             }
             if (Input.EdgeDetectKeyUp(Keys.Down))
