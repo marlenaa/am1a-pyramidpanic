@@ -50,6 +50,7 @@ namespace PyramidPanic
                 this.explorer.State = this.explorer.IdleWalk;
                //word de sprite effect meegegeven
                 this.explorer.IdleWalk.Effect = SpriteEffects.None;
+                //word de rotatie meegegeven
                 this.explorer.IdleWalk.Rotation = -(float)Math.PI / 2;
             }
             //als de omhoog toets word ingedrukt
