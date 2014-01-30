@@ -54,15 +54,19 @@ namespace PyramidPanic
                 //word het plaatje gedraaid
                 this.explorer.IdleWalk.Rotation = (float)Math.PI / 2;
             }
+            //als de omlaag knop word ingedrukt
             if (Input.EdgeDetectKeyUp(Keys.Down))
             {
+                //word de idle state meegegeven
                 this.explorer.State = this.explorer.Idle;
+                //word het effect meegegeven
                 this.explorer.Idle.Effect = SpriteEffects.None;
+                //word het plaatje gedraaid
                 this.explorer.Idle.Rotation = (float)Math.PI / 2;
             }
             base.Update(gameTime);
         }
-
+        //draw
         public new void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
