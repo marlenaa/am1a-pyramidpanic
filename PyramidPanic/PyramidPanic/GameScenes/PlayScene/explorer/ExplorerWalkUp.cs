@@ -41,8 +41,10 @@ namespace PyramidPanic
         {
             this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
 
+            //als de positie kleiner is dat Y -16
             if (this.explorer.Position.Y < 16)
             {
+                //word de snelheid meegegeven
                 this.explorer.Position += new Vector2(0f, this.explorer.Speed); 
                 this.explorer.State = this.explorer.IdleWalk;
                
@@ -52,8 +54,11 @@ namespace PyramidPanic
             //als de omhoog toets word ingedrukt
             if (Input.EdgeDetectKeyUp(Keys.Up))
             {
+                //word de explorer idle aangeroepen
                 this.explorer.State = this.explorer.Idle;
+                //word de effect aangepast
                 this.explorer.Idle.Effect = SpriteEffects.None;
+                //het plaats word zo gedraaid dat het naar boven word gericht
                 this.explorer.Idle.Rotation = -(float)Math.PI / 2 ;
             }
             base.Update(gameTime);
