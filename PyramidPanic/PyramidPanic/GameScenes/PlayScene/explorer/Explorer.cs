@@ -41,7 +41,6 @@ namespace PyramidPanic
             {
                 get { return this.walkLeft; }
             }
-         
         public ExplorerWalkRight WalkRight
         {
             get { return this.walkRight; }
