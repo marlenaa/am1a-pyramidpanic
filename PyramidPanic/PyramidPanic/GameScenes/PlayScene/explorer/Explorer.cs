@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //dit is een toestands class ( dus hij moet de interface implementeren)
+    //de eerste naam is de ervende class.
     public class Explorer : IAnimatedSprite
     {
         //Fields

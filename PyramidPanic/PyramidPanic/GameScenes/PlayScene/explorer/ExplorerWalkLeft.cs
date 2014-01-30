@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //dit is een toestands class ( dus hij moet de interface implementeren)
+    //de eerste naam is de ervende class.
     public class ExplorerWalkLeft : AnimatedSprite, IEntityState
     {
         //Fields
@@ -27,9 +29,9 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        //met de initialize methode geven we de positie mee 
         public void initialize()
         {
-
             this.destinationRect.X = (int)this.explorer.Position.X;
             this.destinationRect.Y = (int)this.explorer.Position.Y;
         }

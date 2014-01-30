@@ -1,4 +1,5 @@
-﻿//usings zijn XNA code bibliotheek gebruiken
+﻿//dit is de walk down class hiermee kan de explorer omlaag lopen
+//usings zijn XNA code bibliotheek gebruiken
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        //met de initialize methode geven we de positie mee 
         public void initialize()
         {
             this.destinationRect.X = (int)this.explorer.Position.X;
@@ -40,7 +42,7 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime)
         {
             this.explorer.Position += new Vector2(0f, this.explorer.Speed);
-
+            //als de positie y > 480 - 48 is:
             if (this.explorer.Position.Y > 480 - 48)
             {
                 this.explorer.Position -= new Vector2(0f, this.explorer.Speed);
