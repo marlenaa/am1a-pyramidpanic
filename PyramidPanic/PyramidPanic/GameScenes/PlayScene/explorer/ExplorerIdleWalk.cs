@@ -1,4 +1,5 @@
-﻿//usings zijn XNA code bibliotheek gebruiken
+﻿//dit is de idlewalk class, als je tegen een muur loopt blijft hij hierdoor doorlopen
+//usings zijn XNA code bibliotheek gebruiken
 using System;
 using System.Collections.Generic;
 using System.Linq;
