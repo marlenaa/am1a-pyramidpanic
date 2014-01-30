@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de walkleft class zich te houden aan de wetten en regels van de animated sprite class
+    //de eerste is de ervende class
     public class WalkRight : AnimatedSprite, IEntityState
     {
         //Fields
@@ -30,19 +32,23 @@ namespace PyramidPanic
         {
 
         }
-
+        //update
         public new void Update(GameTime gameTime)
         {
+            //als de scorpion een rand raakt
             if (this.scorpion.Position.X > 640 - 16)
             {
+                //gaat hij weer naar links
                 this.scorpion.State = new WalkLeft(this.scorpion);
             }
+            //de snelheid word meegegeven
             this.scorpion.Position += new Vector2(this.scorpion.Speed, 0f);
             this.destinationRect.X = (int)this.scorpion.Position.X;
             this.destinationRect.Y = (int)this.scorpion.Position.Y;
+            //hiermee zorg je dat het beweegd
             base.Update(gameTime);
         }
-
+        //draw
         public new void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);

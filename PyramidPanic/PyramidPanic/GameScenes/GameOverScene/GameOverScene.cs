@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de gameoverscene om zich te houden aan de wetten en regels die staan in de istate
     public class GameOverScene : IState
     {
 

@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de ScoreScene class zich te houden aan de wetten en regels van de IState class
+    //de eerste is de ervende class
     public class ScoreScene : IState
     {
 
@@ -43,10 +45,13 @@ namespace PyramidPanic
         //update methode
         public void Update(GameTime gameTime)
         {
+            //hiermee kan je door de Scenes doorbladeren.
+            //kijkt of de w knop word ingedrukt
             if (Input.EdgeDetectKeyDown(Keys.W))
             {
                 this.game.IState = this.game.LoadScene;
             }
+            //kijkt of de q knop word ingedrukt
             if (Input.EdgeDetectKeyDown(Keys.Q))
             {
                 this.game.IState = this.game.StartScene;
@@ -57,6 +62,7 @@ namespace PyramidPanic
         public void Draw(GameTime gameTime)
         {
             this.game.GraphicsDevice.Clear(Color.White);
+            //hier heb ik geschreven welke Scene dit is.
             this.game.SpriteBatch.DrawString(this.spriteFont, "ScoreScene" , new Vector2(0f, 0f), Color.Black);
         }
 

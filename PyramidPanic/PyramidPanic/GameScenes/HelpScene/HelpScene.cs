@@ -58,6 +58,7 @@ namespace PyramidPanic
         public void Draw(GameTime gameTime)
         {
             this.game.GraphicsDevice.Clear(Color.White);
+            //hier heb ik geschreven welke scene dit is
             this.game.SpriteBatch.DrawString(this.spriteFont, "HELPSCENE", new Vector2(0f, 0f), Color.Black);
         }
 

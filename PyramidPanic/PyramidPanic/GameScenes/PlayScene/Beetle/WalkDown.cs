@@ -29,26 +29,31 @@ namespace PyramidPanic
                                                 32,
                                                 32);
         }
+        //met initialize word de x en de y meegegeven.
         public void initialize()
         {
             this.destinationRect.X = (int)this.beetle.Position.X;
             this.destinationRect.Y = (int)this.beetle.Position.Y;
         }
-
-
+        //update
         public new void Update(GameTime gameTime)
         {
+            //als de beetle een rand raakt
             if (this.beetle.Position.Y > 480 - 48)
             {
+                //gaat hij weer omhoog
                 this.beetle.State = new WalkUp(this.beetle);
+                //word de initialize meegegeven
                 this.beetle.WalkUp.initialize();
             }
+            //dit is de snelheid van de beetle
             this.beetle.Position += new Vector2(0f, this.beetle.Speed);
             this.destinationRect.X = (int)this.beetle.Position.X;
             this.destinationRect.Y = (int)this.beetle.Position.Y;
+            //zorgt ervoor dat het beweegt
             base.Update(gameTime);
         }
-
+        //draw
         public new void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);

@@ -28,6 +28,7 @@ namespace PyramidPanic
         private ExplorerWalkDown walkDown;
         private ExplorerWalkLeft walkLeft;
         private ExplorerWalkRight walkRight;
+        //hier zijn alle properties; walkup, walkdown, walk left, walkright, idle, idlewalk enz
         
             public ExplorerWalkUp WalkUp
             {
@@ -96,12 +97,12 @@ namespace PyramidPanic
             this.state = this.idle;
         }
 
-        //Update
+        //Update word aangeroepen
         public void Update(GameTime gameTime)
         {
             this.state.Update(gameTime);
         }
-        //draw
+        //draw word aangeroepen
         public void Draw(GameTime gameTime)
         {
             this.state.Draw(gameTime);

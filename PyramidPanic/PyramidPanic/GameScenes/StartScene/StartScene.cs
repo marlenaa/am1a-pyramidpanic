@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de StartScene class zich te houden aan de wetten en regels van de IState class
+    //de eerste is de ervende class
      public class StartScene : IState
     {
 
@@ -69,11 +71,13 @@ namespace PyramidPanic
             //update methode
          public void Update(GameTime gameTime)
          {
-
+             //met deze methode kan je door de scenes heen bladeren.
+             //kijkt of de w knop word ingedrukt
              if (Input.EdgeDetectKeyDown(Keys.W))
              {
                  this.game.IState = this.game.PlayScene;
              }
+             //kijkt of de q knop word ingedrukt
              if (Input.EdgeDetectKeyDown(Keys.Q))
              {
                  this.game.IState = this.game.HelpScene;

@@ -11,6 +11,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+
+    //hiermee beloofd de Scorpion class zich te houden aan de wetten en regels van de IAnimatedSprite class
+    //de eerste is de ervende class
     public class Scorpion : IAnimatedSprite
     {
         //Fields
@@ -23,6 +26,7 @@ namespace PyramidPanic
         private WalkRight walkRight;
         private WalkLeft walkLeft;
 
+        //properties
         public WalkRight WalkRight
         {
             get { return this.walkRight; }

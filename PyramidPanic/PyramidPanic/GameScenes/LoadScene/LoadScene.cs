@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de loadscene om zich te houden aan de wetten en regels van de istate
     public class LoadScene : IState
     {
         //fields van de class StartScene
@@ -56,6 +57,7 @@ namespace PyramidPanic
         public void Draw(GameTime gameTime)
         {
             this.game.GraphicsDevice.Clear(Color.White);
+            //hier heb ik geschreven welke scene dit is
             this.game.SpriteBatch.DrawString(this.spriteFont, "LOADSCENE" ,new Vector2(0f, 0f), Color.Black);
         }
     }

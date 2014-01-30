@@ -14,6 +14,8 @@ using System.IO;
 
 namespace PyramidPanic
 {
+    //hiermee beloofd de Playscene class zich te houden aan de wetten en regels van de IState class
+    //de eerste is de ervende class
     public class PlayScene : IState
     {
 
@@ -34,7 +36,7 @@ namespace PyramidPanic
         private KeyboardState ks, oks;
         //private Explorer explorer;
 
-
+        //properties
         public List<IStaticObject> StaticObjects
         {
             get { return this.staticObjects; }
@@ -80,18 +82,26 @@ namespace PyramidPanic
         //loadcontent methode deze methode maakt nieuwe objecten aan van de verschillende classes.
         public void LoadContent()
         {
+            //hiermee word de achtergrond getekend
             this.background = new Image(this.game, @"PlayScene/Background2", Vector2.Zero);
+            //hiermee word de onderste balk getekend
             this.bar = new Image(this.game, @"PlayScene/panel", new Vector2(0f, 448f));
+            //spritefont word geladen
             this.spriteFont = game.Content.Load<SpriteFont>(@"PlayScene/ComicSans");
+            //scores worden toegevoegd
             this.score = 0;
+            //scarabscores worden toegevoegd
             this.scarscore = 0;
+            //3 levens worden toegevoegd
             this.lives = new Image(this.game, @"PlayScene/Lives", new Vector2(73f, 448f));
             this.lives2 = new Image(this.game, @"PlayScene/Lives", new Vector2(113f, 448f));
             this.lives3 = new Image(this.game, @"PlayScene/Lives", new Vector2(150f, 448f));
             this.scarab = new Image(this.game, @"PlayScene/Scarab", new Vector2(260f, 449f));
+            //blokken worden toegevoegd
             this.block = game.Content.Load<Texture2D>(@"PlayScene/Block");
             this.block2 = game.Content.Load<Texture2D>(@"PlayScene/Block_hor");
             this.block3 = game.Content.Load<Texture2D>(@"PlayScene/Block_vert");
+            //de enemies ook nog
             this.beetle = game.Content.Load<Texture2D>(@"PlayScene/Beetle");
             this.scorpion = game.Content.Load<Texture2D>(@"PlayScene/Scorpion");
             this.explorer = game.Content.Load<Texture2D>(@"PlayScene/Explorer");
@@ -99,6 +109,7 @@ namespace PyramidPanic
             //this.explorer = new Explorer(this.game, new Vector2(32f, 240f));
         }
 
+        //met de levellader word alles wat in het tekstbestand staat, in het level geladen.
         #region levellader
         private void LoadLevel(String File)
         {
@@ -138,6 +149,7 @@ namespace PyramidPanic
         //update methode
         public void Update(GameTime gameTime)
         {
+            //hiermee kan de door de verschillende scenes bladeren
             if (Input.EdgeDetectKeyDown(Keys.W))
             {
                 this.game.IState = this.game.ScoreScene;
@@ -146,7 +158,7 @@ namespace PyramidPanic
             {
                 this.game.IState = this.game.StartScene;
             }
-
+            //als de score lager is dan 0 word je doorgestuurd naar de gameoverscene
             if (this.score < 0)
             {
                 this.game.IState = this.game.GameOverScene;
@@ -185,16 +197,16 @@ namespace PyramidPanic
         public void Draw(GameTime gameTime)
         {
             this.game.GraphicsDevice.Clear(Color.White);
-
+            //achtergrond word getekend
             this.background.Draw(gameTime);
-
+            //voor elk object in staticobject 
             foreach (IStaticObject obj in staticObjects) obj.Draw(this.game.SpriteBatch);
-
+            //de bar onderaan word getekend
             this.bar.Draw(gameTime);
-
+            //de cijfers worden toegevoegd
             this.game.SpriteBatch.DrawString(this.spriteFont, "" + this.score, new Vector2(560f, 450f), Color.Gold);
             this.game.SpriteBatch.DrawString(this.spriteFont, "" + this.scarscore, new Vector2(310f, 450f), Color.Gold);
-
+            //levens en andere artikelen worden toegevoegd
             this.lives.Draw(gameTime);
             this.lives2.Draw(gameTime);
             this.lives3.Draw(gameTime);

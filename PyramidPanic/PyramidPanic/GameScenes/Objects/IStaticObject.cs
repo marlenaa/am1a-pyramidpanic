@@ -14,7 +14,9 @@ namespace PyramidPanic.GameScenes.Objects
 {
     public interface IStaticObject
     {
+        //draw
         void Draw(SpriteBatch spitebatch);
+        //rectangle
         Rectangle CollisionRect();
        
     }

@@ -58,11 +58,14 @@ namespace PyramidPanic
                 this.explorer.Idle.Rotation = 0f;
 
             }
-            //dit is als de linkerknop losgelaten word
+            //als de linkerknop word losgelaten
             else if(Input.EdgeDetectKeyUp(Keys.Left))
             {
+                //word de idle state meegegeven
                 this.explorer.State = this.explorer.Idle;
+                //word het effect meegegeven
                 this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                //word de rotatie meegegeven
                 this.explorer.Idle.Rotation = 0f;
 
             }

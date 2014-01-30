@@ -13,8 +13,11 @@ namespace PyramidPanic
 {
     public interface IEntityState
     {
+        //hier word de initialize aangeroepen
         void initialize();
+        //update
         void Update(GameTime gameTime);
+        //draw
         void Draw(GameTime gameTime);
     }
 }

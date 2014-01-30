@@ -32,6 +32,7 @@ namespace PyramidPanic
         //Update
         public void Update(GameTime gameTime)
         {
+            //de timer instellen..
             if (this.timer > 10 / 60f)
             {
                 if (this.sourceRect.X < 96)

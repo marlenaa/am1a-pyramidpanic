@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
-{
+{//hiermee beloofd beetle om zich te houden aan de wetten en regels van IAnimatedSprite
     public class Beetle : IAnimatedSprite
     {
         //Fields
@@ -23,6 +23,7 @@ namespace PyramidPanic
         private WalkUp walkUp;
         private WalkDown walkDown;
 
+        //properties
         public WalkUp WalkUp
         {
             get { return this.walkUp; }
