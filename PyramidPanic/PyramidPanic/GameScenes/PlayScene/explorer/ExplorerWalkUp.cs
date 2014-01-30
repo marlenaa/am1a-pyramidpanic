@@ -31,6 +31,7 @@ namespace PyramidPanic
             this.rotation = -(float)Math.PI / 2;
 
         }
+        //met de initialize methode geven we de positie mee 
         public void initialize()
         {
             this.destinationRect.X = (int)this.explorer.Position.X;
