@@ -49,7 +49,7 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-           
+           //dit is als de rechterknop losgelaten word
             if (Input.EdgeDetectKeyUp(Keys.Right))
             {
                 this.explorer.State = this.explorer.Idle;
@@ -57,6 +57,7 @@ namespace PyramidPanic
                 this.explorer.Idle.Rotation = 0f;
 
             }
+            //dit is als de linkerknop losgelaten word
             else if(Input.EdgeDetectKeyUp(Keys.Left))
             {
                 this.explorer.State = this.explorer.Idle;
@@ -64,12 +65,14 @@ namespace PyramidPanic
                 this.explorer.Idle.Rotation = 0f;
 
             }
+            //dit is als de omhoog knop losgelaten word
             else if(Input.EdgeDetectKeyUp(Keys.Up))
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.None;
                 this.explorer.Idle.Rotation = -(float)Math.PI/2;
             }
+            //dit is als de naar beneden knop losgelaten word
             else if(Input.EdgeDetectKeyUp(Keys.Down))
             {
                 this.explorer.State = this.explorer.Idle;
@@ -79,7 +82,7 @@ namespace PyramidPanic
             //zorgt voor de animatie.
             base.Update(gameTime);
         }
-
+        //draw
         public new void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
